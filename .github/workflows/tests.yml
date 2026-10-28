@@ -1,0 +1,27 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  formula:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: tap this checkout
+        run: |
+          brew update --quiet
+          taps="$(brew --repository)/Library/Taps/jgorodetsky"
+          mkdir -p "$taps"
+          ln -s "$GITHUB_WORKSPACE" "$taps/homebrew-dott"
+          brew trust --formula jgorodetsky/dott/dott || true
+      - run: brew audit --strict --online --formula jgorodetsky/dott/dott
+      - run: brew install --build-from-source jgorodetsky/dott/dott
+      - run: brew test jgorodetsky/dott/dott
