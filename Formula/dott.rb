@@ -1,8 +1,8 @@
 class Dott < Formula
   desc "Fuzzy picker for your dotfiles: what is fine, what needs you, and the fixes"
   homepage "https://github.com/jgorodetsky/dott"
-  url "https://github.com/jgorodetsky/dott/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "016346009a77840f089c287ce4837ed4e7a46500f9e4e6fdfc536e0b4abc724a"
+  url "https://github.com/jgorodetsky/dott/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "f7f2dc17bd31d9830dac25a02f31c8beff2b9acf3d743d0da4326fdd7bb15869"
   license "MIT"
   head "https://github.com/jgorodetsky/dott.git", branch: "main"
 
